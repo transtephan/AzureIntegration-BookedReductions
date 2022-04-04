@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "BookedReductionsKL",
+  "type": "object",
+  "required": [
+    //?
+  ],
+
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "VMSHeader": {
+      "type": "object",
+      "required": [
+        "RecordType",
+        "IntegrationObjectName",
+        "FileVersion",
+        "VMSInstanceCode",
+        "PlanningMarketCode",
+        "MainCompany",
+        "SequenceNumber",
+        "VMSTransactionID",
+        "TransactionDate",
+        "TransactionTime"
+      ],
+      "properties": {
+        "RecordType": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "IntegrationObjectName": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "FileVersion": {
+          "type": "numeric"
+        },
+        "VMSInstanceCode": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "PlanningMarketCode": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "MainCompanyCode": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "SequenceNumber": {
+          "type": "numeric"
+        },
+        "VMSTransactionID": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "TransactionDate": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "TransactionTime": {
+          "type": "string",
+          "pattern": "^.*$"
+        }
+      }
+    },
+    "Header2": {
+      "type": "object",
+      "required": [
+        "RecordType",
+        "PMCurrencyCode"
+      ],
+      "properties": {
+        "RecordType": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "PMCurrencyCode": {
+          "type": "string",
+          "pattern": "^.*$"
+        }
+      }
+    },
+    "BookedHeader": {
+      "type": "object",
+      "required": [
+        "RecordType",
+        "FileVersion",
+        "MainCompany",
+        "PMCurrency",
+        "FileCreationDate",
+        "FileCreationTime"
+      ],
+      "properties": {
+        "RecordType": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "FileVersion": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "MainCompany": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "PMCurrency": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "FileCreationDate": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "FileCreationTime": {
+          "type": "string",
+          "pattern": "^.*$"
+        }
+      }
+    },
+
+  }
+}
+

@@ -1,16 +1,17 @@
 using System;
+using System.IO;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
-namespace BookedReductions
+namespace AzureIntegration_BookedReductions
 {
-    public static class Function1
+    public class Function1
     {
         [FunctionName("Function1")]
-        public void Run([ServiceBusTrigger("QueueNameVMS", Connection = "ServiceBusConnectionVMS")]string myQueueItem, ILogger log)
+        public void Run([BlobTrigger("samples-workitems/{name}", Connection = "BlobStorageConnectionString")]Stream myBlob, string name, ILogger log)
         {
-            log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
         }
     }
 }
