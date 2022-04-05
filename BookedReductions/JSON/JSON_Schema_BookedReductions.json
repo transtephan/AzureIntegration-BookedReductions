@@ -3,9 +3,10 @@
   "title": "BookedReductionsKL",
   "type": "object",
   "required": [
-    //?
+    "version",
+    "VMSHeader",
+    "Header2"
   ],
-
   "properties": {
     "version": {
       "type": "string"
@@ -34,22 +35,21 @@
           "pattern": "^.*$"
         },
         "FileVersion": {
-          "type": "numeric"
+          "type": "integer"
         },
         "VMSInstanceCode": {
           "type": "string",
           "pattern": "^.*$"
         },
         "PlanningMarketCode": {
-          "type": "string",
-          "pattern": "^.*$"
+          "type": "integer"
         },
         "MainCompanyCode": {
           "type": "string",
           "pattern": "^.*$"
         },
         "SequenceNumber": {
-          "type": "numeric"
+          "type": "integer"
         },
         "VMSTransactionID": {
           "type": "string",
@@ -68,58 +68,173 @@
     "Header2": {
       "type": "object",
       "required": [
-        "RecordType",
-        "PMCurrencyCode"
+        "ReductionHeader",
+        "Details"
       ],
       "properties": {
-        "RecordType": {
-          "type": "string",
-          "pattern": "^.*$"
+        "ReductionHeader": {
+          "type": "object",
+          "required": [
+            "RecordType",
+            "BoreNumber",
+            "ModuleCode",
+            "Location",
+            "FiscalCompany",
+            "FiscalCurrency",
+            "EOP",
+            "BookedReductionCreationDate",
+            "BookedReductionSentDate",
+            "OrgModuleCode"
+          ],
+          "properties": {
+            "RecordType": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "BoreNumber": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "ModuleCode": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "Location": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "FiscalCompany": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "FiscalCurrency": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "EOP": {
+              "type": "boolean"
+            },
+            "BookedReductionCreationDate": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "BookedReductionSentDate": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "OrgModuleCode": {
+              "type": "string",
+              "pattern": "^.$"
+            }
+          }
         },
-        "PMCurrencyCode": {
-          "type": "string",
-          "pattern": "^.*$"
+        "Details": {
+          "type": "object",
+          "required": [
+            "RecordType",
+            "OrderNumber",
+            "Season",
+            "SeasonYear",
+            "Department",
+            "Index",
+            "ColourId",
+            "ReducedPieces",
+            "NewPriceInFiscalCurrency",
+            "OldPriceInFiscalCurrency",
+            "TotalPriceInFiscalCurrency",
+            "NotePosition",
+            "IBMSizeCode",
+            "SizeScaleCode",
+            "SDSSizeCode",
+            "CorporateBrandId",
+            "ProductId",
+            "ArticleId",
+            "PriceTagProductNumber",
+            "PriceTagArticleNumber"
+          ],
+          "properties": {
+            "RecordType": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "OrderNumber": {
+              "type": "string",
+              "pattern": "[1-9][0-9]{5}"
+            },
+            "Season": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "SeasonYear": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "Department": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "Index": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "ColourId": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "ReducedPieces": {
+              "type": "integer"
+            },
+            "NewPriceInFiscalCurrency": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "OldPriceInFiscalCurrency": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "TotalPriceInFiscalCurrency": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "NotePosition": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "IBMSizeCode": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "SizeScaleCode": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "SDSSizeCode": {
+              "type": "string",
+              "pattern": "^.$"
+            },
+            "CorporateBrandId": {
+              "type": "integer"
+            },
+            "ProductId": {
+              "type": "string",
+              "pattern": "[0-9]{7}"
+            },
+            "ArticleId": {
+              "type": "string",
+              "pattern": "[0-9]{3}"
+            },
+            "PriceTagProductNumber": {
+              "type": "string",
+              "pattern": "[0-9]{5}[0]"
+            },
+            "PriceTagArticleNumber": {
+              "type": "string",
+              "pattern": "[0-9]{2}"
+            }
+          }
         }
       }
-    },
-    "BookedHeader": {
-      "type": "object",
-      "required": [
-        "RecordType",
-        "FileVersion",
-        "MainCompany",
-        "PMCurrency",
-        "FileCreationDate",
-        "FileCreationTime"
-      ],
-      "properties": {
-        "RecordType": {
-          "type": "string",
-          "pattern": "^.*$"
-        },
-        "FileVersion": {
-          "type": "string",
-          "pattern": "^.*$"
-        },
-        "MainCompany": {
-          "type": "string",
-          "pattern": "^.*$"
-        },
-        "PMCurrency": {
-          "type": "string",
-          "pattern": "^.*$"
-        },
-        "FileCreationDate": {
-          "type": "string",
-          "pattern": "^.*$"
-        },
-        "FileCreationTime": {
-          "type": "string",
-          "pattern": "^.*$"
-        }
-      }
-    },
-
+    }
   }
 }
 
