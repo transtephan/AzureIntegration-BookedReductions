@@ -18,11 +18,11 @@ namespace AzureIntegration_BookedReductions
             _bookedReductionsKLService = bookedReductionsKLService;
         }
 
-        [FunctionName("Function1")]
+        /*[FunctionName("Function1")]
         public void Run([BlobTrigger("samples-workitems/{name}", Connection = "BlobStorageConnectionString")] Stream myBlob, string name, ILogger log)
         {
             log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
-        }
+        }*/
     
 
         [FunctionName("Function1")]

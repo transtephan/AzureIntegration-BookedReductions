@@ -65,15 +65,34 @@
         }
       }
     },
+    
     "Header2": {
       "type": "object",
       "required": [
+        "H2",
         "ReductionHeader",
         "Details"
       ],
       "properties": {
-        "ReductionHeader": {
+        "H2": {
           "type": "object",
+          "required": [
+            "RecordType",
+            "PMCurrencyCode"
+          ],
+          "properties": {
+            "RecordType": {
+              "type": "string",
+              "pattern": "^.*$"
+            },
+            "PMCurrencyCode": {
+              "type": "string",
+              "pattern": "^.*$"
+            }
+          }
+        },
+        "ReductionHeader": {
+          "type": "array",
           "required": [
             "RecordType",
             "BoreNumber",
@@ -129,7 +148,7 @@
           }
         },
         "Details": {
-          "type": "object",
+          "type": "array",
           "required": [
             "RecordType",
             "OrderNumber",

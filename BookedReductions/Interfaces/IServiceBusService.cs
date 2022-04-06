@@ -8,7 +8,7 @@ namespace AzureIntegration_BookedReductions.Interfaces
 {
     public interface IServiceBusService
     {
-        Task UpdateServiceBusQueue(byte[] blobUrl, Dictionary<string, string> userProps); //Queue instead of topic since only one output
+        Task UpdateServiceBusQueue(byte[] blobUrl, Dictionary<string, string> userProps); 
 
     }
 }

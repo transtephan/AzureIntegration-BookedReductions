@@ -16,6 +16,7 @@ namespace AzureIntegration_BookedReductions.Models
         public VMSHeader VMSHeader { get; set; }
         [Required]
         public Header2 Header2 { get; set; }
+       
     }
 
 
@@ -65,11 +66,25 @@ namespace AzureIntegration_BookedReductions.Models
         [Required]
         public string TransactionTime { get; set; }
     }
+   
 
     public class Header2
     {
+        public H2 H2 { get; set; }
         public Reductionheader ReductionHeader { get; set; }
         public Details Details { get; set; }
+    }
+    public class H2
+    {
+        public H2(
+            string _recordType,
+            string _pmCurrencyCode)
+        {
+            RecordType = _recordType;
+            PMCurrencyCode = _pmCurrencyCode;
+        }
+        public string RecordType { get; set; }
+        public string PMCurrencyCode { get; set; }
     }
 
     public class Reductionheader
