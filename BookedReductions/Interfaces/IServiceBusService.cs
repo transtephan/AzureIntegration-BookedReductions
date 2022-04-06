@@ -10,7 +10,7 @@ namespace AzureIntegration_BookedReductions.Interfaces
 {
     public interface IServiceBusService
     {
-        //Task UpdateServiceBusQueue(byte[] blobUrl, Dictionary<string, string> userProps); 
-        Task UpdateServiceBusQueue(Message queueItem, ILogger log);
+        Task UpdateServiceBusQueue(byte[] blobUrl, Dictionary<string, string> userProps); 
+
     }
 }

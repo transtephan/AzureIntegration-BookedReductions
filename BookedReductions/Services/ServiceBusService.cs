@@ -12,7 +12,7 @@ namespace AzureIntegration_BookedReductions.Services
 {
     public class ServiceBusService : IServiceBusService
     {
-        public async Task UpdateServiceBusQueue(Message queueItem, ILogger log)
+        public async Task UpdateServiceBusQueue(byte[] blobUrl, Dictionary<string, string> userProps)
         {
             try
             {
@@ -21,8 +21,15 @@ namespace AzureIntegration_BookedReductions.Services
                 await using(var client = new ServiceBusClient(serviceBusConnectionString))
                 {
                     var sender = client.CreateSender(topicName);
-                    var messageOutput = new ServiceBusMessage(queueItem.ToString());
-                   
+                    var messageOutput = new ServiceBusMessage(blobUrl)
+                    {
+                        MessageId = Convert.ToString(Guid.NewGuid())
+                    }; 
+                    foreach (var prop in userProps)
+                    {
+                        messageOutput.ApplicationProperties.Add(prop.Key, prop.Value);
+                    }
+
                     await sender.SendMessageAsync(messageOutput);
                 }
             }

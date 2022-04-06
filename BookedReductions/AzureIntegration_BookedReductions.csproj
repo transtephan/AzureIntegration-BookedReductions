@@ -23,7 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Constants\" />
-    <Folder Include="Extensions\" />
     <Folder Include="Deploy\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>

@@ -19,15 +19,9 @@ namespace AzureIntegration_BookedReductions
             _bookedReductionsKLService = bookedReductionsKLService;
         }
 
-        /*[FunctionName("Function1")]
-        public void Run([BlobTrigger("samples-workitems/{name}", Connection = "BlobStorageConnectionString")] Stream myBlob, string name, ILogger log)
-        {
-            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
-        }*/
-    
 
         [FunctionName("Function2")]
-        public void Run([ServiceBusTrigger("QueueNameVMS", Connection = "ServiceBusConnectionVMS")] Message myQueueItem, ILogger log)
+        public void Run([ServiceBusTrigger("%QueueNameVMS%", Connection = "ServiceBusConnectionVMS")] Message myQueueItem, ILogger log)
         {
             log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
             _bookedReductionsKLService.ProcessMsg(myQueueItem, log);

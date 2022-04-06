@@ -16,12 +16,10 @@ namespace AzureIntegration_BookedReductions.Services
     public class BookedReductionsKLService : IBookedReductionsKLService
     {
         private readonly ILogger _log;
-        private readonly IBlobService _blobService;
         private readonly IServiceBusService _serviceBus;
-        public BookedReductionsKLService(ILogger<BookedReductionsKLService> log, IBlobService blobService, IServiceBusService serviceBusService)
+        public BookedReductionsKLService(ILogger<BookedReductionsKLService> log, IServiceBusService serviceBusService)
         {
             _log = log;
-            _blobService = blobService;
             _serviceBus = serviceBusService;
         }
 
@@ -31,7 +29,7 @@ namespace AzureIntegration_BookedReductions.Services
             //var blobUri = messageProperties.ContainsKey("BlobUri") == true ? messageProperties["BlobUri"].ToString(): "";
             //log.LogInformation("Blob URI received from SB Queue");
             
-            await _serviceBus.UpdateServiceBusQueue(queueItem, log);
+           _serviceBus.UpdateServiceBusQueue(queueItem, log);
 
         }
         public async Task DeliveryTransferProcessMsg(string queueItem, ILogger log)
