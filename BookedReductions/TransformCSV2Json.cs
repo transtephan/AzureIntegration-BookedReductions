@@ -1,4 +1,5 @@
 ﻿using AzureIntegration_BookedReductions.Interfaces;
+using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,10 +26,11 @@ namespace AzureIntegration_BookedReductions
         }*/
     
 
-        [FunctionName("Function1")]
-        public void Run([ServiceBusTrigger("QueueNameVMS", Connection = "ServiceBusConnectionVMS")] string myQueueItem, ILogger log)
+        [FunctionName("Function2")]
+        public void Run([ServiceBusTrigger("QueueNameVMS", Connection = "ServiceBusConnectionVMS")] Message myQueueItem, ILogger log)
         {
             log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+            _bookedReductionsKLService.ProcessMsg(myQueueItem, log);
         }
 
     }
