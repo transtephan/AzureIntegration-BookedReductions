@@ -21,7 +21,7 @@
         "PlanningMarketCode",
         "MainCompany",
         "SequenceNumber",
-        "VMSTransactionID",
+        "VMSTransactionId",
         "TransactionDate",
         "TransactionTime"
       ],

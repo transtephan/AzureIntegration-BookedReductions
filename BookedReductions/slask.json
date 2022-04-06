@@ -1,0 +1,158 @@
+{
+  "public" "class",
+  "Header2" {
+    "public" "Header2()",
+    {
+
+    }
+
+
+  },
+
+  "public" "class",
+  "Integrationobjectname" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Fileversion" {
+    "public" "string",
+    "type" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Vmsinstancecode" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Planningmarketcode" {
+    "public" "string",
+    "type" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Maincompanycode" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Sequencenumber" {
+    "public" "string",
+    "type" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Vmstransactionid" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Transactiondate" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Transactiontime" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+
+
+
+  "public" "class",
+  "Recordtype1" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Borenumber" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Modulecode" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Location" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Fiscalcompany" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Fiscalcurrency" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "EOP" {
+    "public" "string",
+    "type" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Bookedreductioncreationdate" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Bookedreductionsentdate" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  },
+
+  "public" "class",
+  "Orgmodulecode" {
+    "public" "string",
+    "type" { "get;" "set;" },
+    "public" "string",
+    "pattern" { "get;" "set;" }
+  }
+}
