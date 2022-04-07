@@ -71,8 +71,8 @@ namespace AzureIntegration_BookedReductions.Models
     public class Header2
     {
         public H2 H2 { get; set; }
-        public Reductionheader ReductionHeader { get; set; }
-        public Details Details { get; set; }
+        public List<Reductionheader> ReductionHeader { get; set; }
+        public List<Details> Details { get; set; }
     }
     public class H2
     {
@@ -83,7 +83,9 @@ namespace AzureIntegration_BookedReductions.Models
             RecordType = _recordType;
             PMCurrencyCode = _pmCurrencyCode;
         }
+        [Required]
         public string RecordType { get; set; }
+        [Required]
         public string PMCurrencyCode { get; set; }
     }
 
@@ -113,15 +115,25 @@ namespace AzureIntegration_BookedReductions.Models
             BookedReductionSentDate = _bookedReductionSentDate;
             OrgModuleCode = _orgModuleCode;
         }
+        [Required]
         public string RecordType { get; set; }
+        [Required]
         public string BoreNumber { get; set; }
+        [Required]
         public string ModuleCode { get; set; }
+        [Required]
         public string Location { get; set; }
+        [Required]
         public string FiscalCompany { get; set; }
+        [Required]
         public string FiscalCurrency { get; set; }
+        [Required]
         public bool EOP { get; set; }
+        [Required]
         public string BookedReductionCreationDate { get; set; }
+        [Required]
         public string BookedReductionSentDate { get; set; }
+        [Required]
         public string OrgModuleCode { get; set; }
     }
 
@@ -171,25 +183,45 @@ namespace AzureIntegration_BookedReductions.Models
             PriceTagProductNumber = _priceTagProductNumber;
             PriceTagArticleNumber = _priceTagArticleNumber;
         }
+        [Required]
         public string RecordType { get; set; }
+        [Required]
         public string OrderNumber { get; set; }
+        [Required]
         public string Season { get; set; }
+        [Required]
         public string SeasonYear { get; set; }
+        [Required]
         public string Department { get; set; }
+        [Required]
         public string Index { get; set; }
+        [Required]
         public string ColourId { get; set; }
+        [Required]
         public int ReducedPieces { get; set; }
+        [Required]
         public string NewPriceInFiscalCurrency { get; set; }
+        [Required]
         public string OldPriceInFiscalCurrency { get; set; }
+        [Required]
         public string TotalPriceInFiscalCurrency { get; set; }
+        [Required]
         public string NotePosition { get; set; }
+        [Required]
         public string IBMSizeCode { get; set; }
+        [Required]
         public string SizeScaleCode { get; set; }
+        [Required]
         public string SDSSizeCode { get; set; }
+        [Required]
         public int CorporateBrandId { get; set; }
+        [Required]
         public string ProductId { get; set; }
+        [Required]
         public string ArticleId { get; set; }
+        [Required]
         public string PriceTagProductNumber { get; set; }
+        [Required]
         public string PriceTagArticleNumber { get; set; }
     }
 }

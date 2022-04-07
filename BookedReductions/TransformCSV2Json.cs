@@ -18,7 +18,12 @@ namespace AzureIntegration_BookedReductions
         {
             _bookedReductionsKLService = bookedReductionsKLService;
         }
-
+        [FunctionName("Function1")]
+        public async Task RunReprocessing([BlobTrigger("reprocess-deliverytransfer/{name}", Connection = "BlobStorageConnectionString")] Stream myBlob, string name, ILogger log)
+        {
+            log.LogInformation("Reprocessing of DeliveryTransfer started.");
+            await _bookedReductionsKLService.ReProcessMsg(myBlob, name, log);
+        }
 
         [FunctionName("Function2")]
         public void Run([ServiceBusTrigger("%QueueNameVMS%", Connection = "ServiceBusConnectionVMS")] Message myQueueItem, ILogger log)

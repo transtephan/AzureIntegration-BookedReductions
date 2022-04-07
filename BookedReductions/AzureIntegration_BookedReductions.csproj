@@ -24,6 +24,5 @@
   <ItemGroup>
     <Folder Include="Constants\" />
     <Folder Include="Deploy\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>
