@@ -143,14 +143,13 @@ namespace AzureIntegration_BookedReductions.Models
             string _recordType,
             string _orderNumber,
             string _season,
-            string _seasonYear,
             string _department,
             string _index,
             string _colourId,
             int _reducedPieces,
-            string _newPriceInFiscalCurrency,
-            string _oldPriceInFiscalCurrency,
-            string _totalPriceInFiscalCurrency,
+            decimal _newPriceInFiscalCurrency,
+            decimal _oldPriceInFiscalCurrency,
+            decimal _totalPriceInFiscalCurrency,
             string _notePosition,
             string _ibmSizeCode,
             string _sizeScaleCode,
@@ -165,7 +164,6 @@ namespace AzureIntegration_BookedReductions.Models
             RecordType = _recordType;
             OrderNumber = _orderNumber;
             Season = _season;
-            SeasonYear = _seasonYear;
             Department = _department;
             Index = _index;
             ColourId = _colourId;
@@ -190,8 +188,6 @@ namespace AzureIntegration_BookedReductions.Models
         [Required]
         public string Season { get; set; }
         [Required]
-        public string SeasonYear { get; set; }
-        [Required]
         public string Department { get; set; }
         [Required]
         public string Index { get; set; }
@@ -200,11 +196,11 @@ namespace AzureIntegration_BookedReductions.Models
         [Required]
         public int ReducedPieces { get; set; }
         [Required]
-        public string NewPriceInFiscalCurrency { get; set; }
+        public decimal NewPriceInFiscalCurrency { get; set; }
         [Required]
-        public string OldPriceInFiscalCurrency { get; set; }
+        public decimal OldPriceInFiscalCurrency { get; set; }
         [Required]
-        public string TotalPriceInFiscalCurrency { get; set; }
+        public decimal TotalPriceInFiscalCurrency { get; set; }
         [Required]
         public string NotePosition { get; set; }
         [Required]

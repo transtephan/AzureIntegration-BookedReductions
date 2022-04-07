@@ -134,16 +134,15 @@
               "type": "boolean"
             },
             "BookedReductionCreationDate": {
-              "type": "string",
-              "pattern": "^.$"
+              "type": "string", //date
+              "pattern": "^.$"  //date
             },
             "BookedReductionSentDate": {
               "type": "string",
               "pattern": "^.$"
             },
             "OrgModuleCode": {
-              "type": "string",
-              "pattern": "^.$"
+              "type": "integer"
             }
           }
         },
@@ -153,7 +152,6 @@
             "RecordType",
             "OrderNumber",
             "Season",
-            "SeasonYear",
             "Department",
             "Index",
             "ColourId",
@@ -184,10 +182,6 @@
               "type": "string",
               "pattern": "^.$"
             },
-            "SeasonYear": {
-              "type": "string",
-              "pattern": "^.$"
-            },
             "Department": {
               "type": "string",
               "pattern": "^.$"
@@ -204,16 +198,13 @@
               "type": "integer"
             },
             "NewPriceInFiscalCurrency": {
-              "type": "string",
-              "pattern": "^.$"
+              "type": "number"
             },
             "OldPriceInFiscalCurrency": {
-              "type": "string",
-              "pattern": "^.$"
+              "type": "number"
             },
             "TotalPriceInFiscalCurrency": {
-              "type": "string",
-              "pattern": "^.$"
+              "type": "number"
             },
             "NotePosition": {
               "type": "string",
