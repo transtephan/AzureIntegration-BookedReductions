@@ -1,4 +1,5 @@
 ﻿using AzureIntegration_BookedReductions.Interfaces;
+using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 using System;
@@ -17,18 +18,18 @@ namespace AzureIntegration_BookedReductions
         {
             _bookedReductionsKLService = bookedReductionsKLService;
         }
-
-        [FunctionName("Function1")]
-        public void Run([BlobTrigger("samples-workitems/{name}", Connection = "BlobStorageConnectionString")] Stream myBlob, string name, ILogger log)
+        [FunctionName("ReprocessRecievedBookedReductionMsg")]
+        public async Task RunReprocessing([BlobTrigger("bookedreduction-reprocess/{name}", Connection = "BlobStorageConnectionString")] Stream myBlob, string name, ILogger log)
         {
-            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
+            log.LogInformation("Reprocessing of DeliveryTransfer started.");
+            await _bookedReductionsKLService.ReProcessMsg(myBlob, name, log);
         }
-    
 
-        [FunctionName("Function1")]
-        public void Run([ServiceBusTrigger("QueueNameVMS", Connection = "ServiceBusConnectionVMS")] string myQueueItem, ILogger log)
+        [FunctionName("RecieveBookedReductionMsg")]
+        public void Run([ServiceBusTrigger("%QueueNameVMS%", Connection = "ServiceBusConnectionVMS")] Message myQueueItem, ILogger log)
         {
             log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+            _bookedReductionsKLService.ProcessMsg(myQueueItem, log);
         }
 
     }

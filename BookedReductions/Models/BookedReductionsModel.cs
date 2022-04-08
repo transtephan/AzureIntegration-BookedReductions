@@ -16,6 +16,9 @@ namespace AzureIntegration_BookedReductions.Models
         public VMSHeader VMSHeader { get; set; }
         [Required]
         public Header2 Header2 { get; set; }
+        [Required]
+        public H2 H2 { get; set; }
+       
     }
 
 
@@ -65,16 +68,29 @@ namespace AzureIntegration_BookedReductions.Models
         [Required]
         public string TransactionTime { get; set; }
     }
-
     public class Header2
     {
-        public Reductionheader ReductionHeader { get; set; }
-        public Details Details { get; set; }
-    }
+        public Header2(
+            string _recordType,
+            string _pmCurrencyCode)
+        {
+            RecordType = _recordType;
+            PMCurrencyCode = _pmCurrencyCode;
+        }
+        [Required]
+        public string RecordType { get; set; }
+        [Required]
+        public string PMCurrencyCode { get; set; }
+    };
 
-    public class Reductionheader
+    public class H2
     {
-        public Reductionheader(
+        public List<ReductionHeader> ReductionHeader { get; set; }
+        public List<Details> Details { get; set; }
+    }
+    public class ReductionHeader
+    {
+        public ReductionHeader(
             string _recordType,
             string _boreNumber,
             string _moduleCode,
@@ -98,15 +114,25 @@ namespace AzureIntegration_BookedReductions.Models
             BookedReductionSentDate = _bookedReductionSentDate;
             OrgModuleCode = _orgModuleCode;
         }
+        [Required]
         public string RecordType { get; set; }
+        [Required]
         public string BoreNumber { get; set; }
+        [Required]
         public string ModuleCode { get; set; }
+        [Required]
         public string Location { get; set; }
+        [Required]
         public string FiscalCompany { get; set; }
+        [Required]
         public string FiscalCurrency { get; set; }
+        [Required]
         public bool EOP { get; set; }
+        [Required]
         public string BookedReductionCreationDate { get; set; }
+        [Required]
         public string BookedReductionSentDate { get; set; }
+        [Required]
         public string OrgModuleCode { get; set; }
     }
 
@@ -116,14 +142,13 @@ namespace AzureIntegration_BookedReductions.Models
             string _recordType,
             string _orderNumber,
             string _season,
-            string _seasonYear,
             string _department,
             string _index,
             string _colourId,
             int _reducedPieces,
-            string _newPriceInFiscalCurrency,
-            string _oldPriceInFiscalCurrency,
-            string _totalPriceInFiscalCurrency,
+            decimal _newPriceInFiscalCurrency,
+            decimal _oldPriceInFiscalCurrency,
+            decimal _totalPriceInFiscalCurrency,
             string _notePosition,
             string _ibmSizeCode,
             string _sizeScaleCode,
@@ -138,7 +163,6 @@ namespace AzureIntegration_BookedReductions.Models
             RecordType = _recordType;
             OrderNumber = _orderNumber;
             Season = _season;
-            SeasonYear = _seasonYear;
             Department = _department;
             Index = _index;
             ColourId = _colourId;
@@ -156,25 +180,43 @@ namespace AzureIntegration_BookedReductions.Models
             PriceTagProductNumber = _priceTagProductNumber;
             PriceTagArticleNumber = _priceTagArticleNumber;
         }
+        [Required]
         public string RecordType { get; set; }
+        [Required]
         public string OrderNumber { get; set; }
+        [Required]
         public string Season { get; set; }
-        public string SeasonYear { get; set; }
+        [Required]
         public string Department { get; set; }
+        [Required]
         public string Index { get; set; }
+        [Required]
         public string ColourId { get; set; }
+        [Required]
         public int ReducedPieces { get; set; }
-        public string NewPriceInFiscalCurrency { get; set; }
-        public string OldPriceInFiscalCurrency { get; set; }
-        public string TotalPriceInFiscalCurrency { get; set; }
+        [Required]
+        public decimal NewPriceInFiscalCurrency { get; set; }
+        [Required]
+        public decimal OldPriceInFiscalCurrency { get; set; }
+        [Required]
+        public decimal TotalPriceInFiscalCurrency { get; set; }
+        [Required]
         public string NotePosition { get; set; }
+        [Required]
         public string IBMSizeCode { get; set; }
+        [Required]
         public string SizeScaleCode { get; set; }
+        [Required]
         public string SDSSizeCode { get; set; }
+        [Required]
         public int CorporateBrandId { get; set; }
+        [Required]
         public string ProductId { get; set; }
+        [Required]
         public string ArticleId { get; set; }
+        [Required]
         public string PriceTagProductNumber { get; set; }
+        [Required]
         public string PriceTagArticleNumber { get; set; }
     }
 }

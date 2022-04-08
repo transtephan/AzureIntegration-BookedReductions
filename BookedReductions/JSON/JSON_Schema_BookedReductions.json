@@ -5,7 +5,8 @@
   "required": [
     "version",
     "VMSHeader",
-    "Header2"
+    "Header2",
+    "H2"
   ],
   "properties": {
     "version": {
@@ -68,12 +69,28 @@
     "Header2": {
       "type": "object",
       "required": [
+        "RecordType",
+        "PMCurrencyCode"
+      ],
+      "properties": {
+        "RecordType": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "PMCurrencyCode": {
+          "type": "string",
+          "pattern": "^.*$"
+        }
+      }
+    },
+    "H2": {
+      "type": "object",
+      "required": [
         "ReductionHeader",
         "Details"
       ],
-      "properties": {
         "ReductionHeader": {
-          "type": "object",
+          "type": "array",
           "required": [
             "RecordType",
             "BoreNumber",
@@ -115,26 +132,24 @@
               "type": "boolean"
             },
             "BookedReductionCreationDate": {
-              "type": "string",
+              "type": "string", //date
               "pattern": "^.$"
             },
             "BookedReductionSentDate": {
-              "type": "string",
+              "type": "string", //date
               "pattern": "^.$"
             },
             "OrgModuleCode": {
-              "type": "string",
-              "pattern": "^.$"
+              "type": "integer"
             }
           }
         },
         "Details": {
-          "type": "object",
+          "type": "array",
           "required": [
             "RecordType",
             "OrderNumber",
             "Season",
-            "SeasonYear",
             "Department",
             "Index",
             "ColourId",
@@ -165,10 +180,6 @@
               "type": "string",
               "pattern": "^.$"
             },
-            "SeasonYear": {
-              "type": "string",
-              "pattern": "^.$"
-            },
             "Department": {
               "type": "string",
               "pattern": "^.$"
@@ -185,16 +196,13 @@
               "type": "integer"
             },
             "NewPriceInFiscalCurrency": {
-              "type": "string",
-              "pattern": "^.$"
+              "type": "number"
             },
             "OldPriceInFiscalCurrency": {
-              "type": "string",
-              "pattern": "^.$"
+              "type": "number"
             },
             "TotalPriceInFiscalCurrency": {
-              "type": "string",
-              "pattern": "^.$"
+              "type": "number"
             },
             "NotePosition": {
               "type": "string",
