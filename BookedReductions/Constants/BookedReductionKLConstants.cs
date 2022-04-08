@@ -15,6 +15,7 @@ namespace AzureIntegration_BookedReductions.Constants
         public const string version = "1.0";
         public const string intDefault = "0";
         public const string decimalDefault = "0.0";
+        public const string boolDefault = "N";
 
         public static string GetBlobFileName(string blobFileLocation)
         {

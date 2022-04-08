@@ -5,7 +5,8 @@
   "required": [
     "version",
     "VMSHeader",
-    "Header2"
+    "Header2",
+    "H2"
   ],
   "properties": {
     "version": {
@@ -68,28 +69,26 @@
     "Header2": {
       "type": "object",
       "required": [
-        "H2",
+        "RecordType",
+        "PMCurrencyCode"
+      ],
+      "properties": {
+        "RecordType": {
+          "type": "string",
+          "pattern": "^.*$"
+        },
+        "PMCurrencyCode": {
+          "type": "string",
+          "pattern": "^.*$"
+        }
+      }
+    },
+    "H2": {
+      "type": "object",
+      "required": [
         "ReductionHeader",
         "Details"
       ],
-      "properties": {
-        "H2": {
-          "type": "object",
-          "required": [
-            "RecordType",
-            "PMCurrencyCode"
-          ],
-          "properties": {
-            "RecordType": {
-              "type": "string",
-              "pattern": "^.*$"
-            },
-            "PMCurrencyCode": {
-              "type": "string",
-              "pattern": "^.*$"
-            }
-          }
-        },
         "ReductionHeader": {
           "type": "array",
           "required": [
@@ -134,7 +133,7 @@
             },
             "BookedReductionCreationDate": {
               "type": "string", //date
-              "pattern": "^.$"  
+              "pattern": "^.$"
             },
             "BookedReductionSentDate": {
               "type": "string", //date
