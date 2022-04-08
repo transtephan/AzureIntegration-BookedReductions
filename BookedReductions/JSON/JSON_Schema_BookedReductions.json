@@ -65,7 +65,6 @@
         }
       }
     },
-    
     "Header2": {
       "type": "object",
       "required": [
@@ -135,10 +134,10 @@
             },
             "BookedReductionCreationDate": {
               "type": "string", //date
-              "pattern": "^.$"  //date
+              "pattern": "^.$"  
             },
             "BookedReductionSentDate": {
-              "type": "string",
+              "type": "string", //date
               "pattern": "^.$"
             },
             "OrgModuleCode": {
