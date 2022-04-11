@@ -12,7 +12,7 @@ namespace AzureIntegration_BookedReductions.Interfaces
     public interface IBookedReductionsKLService
     {
         Task ProcessMsg(Message queueItem, ILogger log);
-        Task DeliveryTransferProcessMsg(string queueItem, ILogger log);
+        Task BookedReductionsProcessMsg(string queueItem, ILogger log);
         Task ReProcessMsg(Stream blobItem, string fileName, ILogger log);
     }
 }
