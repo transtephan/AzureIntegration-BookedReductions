@@ -79,7 +79,11 @@ namespace AzureIntegration_BookedReductions.Services
 
                     //Create instance of Service Bus
                     ServiceBusService sbService = new ServiceBusService();
-
+                    //insert json to out container
+                    string blobUrl = await ProcessBlob(BookedReductionKLConstants.blobOutContainerName, "", fileName, jsonContentByteArr, "application/json", log, "");
+                    
+                    await sbService.UpdateServiceBusTopic(Encoding.UTF8.GetBytes(blobUrl), userProps);
+                    log.LogInformation("BookedReductions sent to SB Topic then Auto forwarded to SB Queue");
 
                 }
                 else
@@ -89,8 +93,20 @@ namespace AzureIntegration_BookedReductions.Services
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                log.LogError("Error in BookedReductions ProcessMsg " + ex.Message);
+                try
+                {
+                    if(int.Parse(Environment.GetEnvironmentVariable("SourceDataStorageLevel")) < 3)
+                    {
+                        await ProcessBlob(BookedReductionKLConstants.blobContainerName, "Error", DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss") + ".txt",
+                            Encoding.UTF8.GetBytes(queueItem), "plain/text", log, ex.Message);
+                    }
+                    log.LogError("Error blob created for BookedReductions. Error in ProcessMsg. " + ex.Message);
+                }
+                catch (Exception)
+                {
+                    throw ex;
+                }
             }
         }
 
@@ -108,7 +124,6 @@ namespace AzureIntegration_BookedReductions.Services
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

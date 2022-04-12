@@ -12,7 +12,7 @@ namespace AzureIntegration_BookedReductions.Services
 {
     public class ServiceBusService : IServiceBusService
     {
-        public async Task UpdateServiceBusQueue(byte[] blobUrl, Dictionary<string, string> userProps)
+        public async Task UpdateServiceBusTopic(byte[] blobUrl, Dictionary<string, string> userProps)
         {
             try
             {
