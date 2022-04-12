@@ -45,7 +45,9 @@ namespace AzureIntegration_BookedReductions.Services
         {
             try
             {
+                string response = string.Empty;
 
+                if(Environment.GetEnvironmentVariable("S"))
             }
             catch (Exception ex)
             {
