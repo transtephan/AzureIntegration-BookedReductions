@@ -14,6 +14,8 @@ using AzureIntegration_BookedReductions.Constants;
 using Azure.Storage.Blobs;
 using Azure.Storage.Sas;
 using Azure.Storage.Blobs.Specialized;
+using AzureIntegration_BookedReductions.Models;
+using Newtonsoft.Json;
 
 namespace AzureIntegration_BookedReductions.Services
 {
@@ -30,13 +32,12 @@ namespace AzureIntegration_BookedReductions.Services
         public async Task ProcessMsg(Message queueMsg, ILogger log)
         {
             string msgcontent = string.Empty;
-            IDictionary<string, object> messageProperties = queueMsg.UserProperties;
-            var blobUri = messageProperties.ContainsKey("BlobUri") == true ? messageProperties["BlobUri"].ToString(): "";
+            var blobUri = Encoding.UTF8.GetString(queueMsg.Body);
             log.LogInformation("Blob URI received from SB Queue");
             if (!string.IsNullOrWhiteSpace(blobUri))
                 msgcontent = await GetMessageFromBlobContainer(fileName: BookedReductionKLConstants.GetBlobFileName(blobUri), log);
             else
-                msgcontent = Encoding.UTF8.GetString(queueMsg.Body);
+                log.LogInformation("Empty message recieved from SB Queue");
             await BookedReductionsProcessMsg(msgcontent, log);
 
 
@@ -46,8 +47,45 @@ namespace AzureIntegration_BookedReductions.Services
             try
             {
                 string response = string.Empty;
+                if (!string.IsNullOrWhiteSpace(queueItem))
+                {
+                    if (Environment.GetEnvironmentVariable("SourceDataStorageLevel") == "1")
+                    {
+                        //Store received csvString to Blob
+                        await ProcessBlob(BookedReductionKLConstants.blobContainerName, "Source", DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss") + ".txt",
+                            Encoding.UTF8.GetBytes(queueItem), "txt/plain", log, "");
+                        log.LogInformation("Uploaded Source CSV File to Blob Container");
+                    }
+                    //Transform CSV string to Model
+                    BookedReductionsModel transformed = TransformCSV2Model.ConvertCSVStrToModel(queueItem, log);
 
-                if(Environment.GetEnvironmentVariable("S"))
+                    //Serialize into Json format
+                    string jsonStr = JsonConvert.SerializeObject(transformed);
+                    byte[] jsonContentByteArr = Encoding.UTF8.GetBytes(jsonStr);
+
+                    if (Environment.GetEnvironmentVariable("SourceDataStorageLevel") == "1") 
+                    {
+                        await ProcessBlob(BookedReductionKLConstants.blobContainerName, "Transform", DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss") + ".json",
+                            jsonContentByteArr, "application/json", log, "");
+                        log.LogInformation("Uploaded Transformed JSON File to Blob Container");
+                    }
+
+                    string fileName = $"OUTB_BOOKED_REDU_07_{DateTime.Now.ToString("yyyyMMddhhmmss")}_1_1.json";
+
+                    Dictionary<string, string> userProps = new Dictionary<string, string>
+                    {
+                        {"SchemaVersion", transformed.version}
+                    };
+
+                    //Create instance of Service Bus
+                    ServiceBusService sbService = new ServiceBusService();
+
+
+                }
+                else
+                {
+                    log.LogInformation("BookedReductionKL Queue item empty");
+                }
             }
             catch (Exception ex)
             {
