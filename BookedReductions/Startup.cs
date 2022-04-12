@@ -20,7 +20,7 @@ namespace AzureIntegration_BookedReductions
                 .Build();
 
             builder.Services.AddScoped<IBookedReductionsKLService, BookedReductionsKLService>();
-            //builder.Services.AddScoped<IBlobService, BlobService>();
+            builder.Services.AddScoped<IBlobService, BlobService>();
             builder.Services.AddScoped<IServiceBusService, ServiceBusService>();
         }
     }

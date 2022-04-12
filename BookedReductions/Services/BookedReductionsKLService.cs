@@ -109,7 +109,6 @@ namespace AzureIntegration_BookedReductions.Services
                 }
             }
         }
-
         public async Task ReProcessMsg(Stream blobItem, string fileName, ILogger log)
         {
             try
