@@ -97,7 +97,7 @@ namespace AzureIntegration_BookedReductions.Models
             string _location,
             string _fiscalComapny,
             string _fiscalCurrency,
-            bool _eop,
+            string _eop,
             string _bookedReductionCreationDate,
             string _bookedReductionSentDate,
             string _orgModuleCode
@@ -127,7 +127,7 @@ namespace AzureIntegration_BookedReductions.Models
         [Required]
         public string FiscalCurrency { get; set; }
         [Required]
-        public bool EOP { get; set; }
+        public string EOP { get; set; }
         [Required]
         public string BookedReductionCreationDate { get; set; }
         [Required]

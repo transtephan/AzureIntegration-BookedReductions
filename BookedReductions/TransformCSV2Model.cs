@@ -82,8 +82,8 @@ namespace AzureIntegration_BookedReductions
                 strArr[2], 
                 strArr[3], 
                 strArr[4], 
-                strArr[5], 
-                TryParseExtension.TryParseBoolean(strArr[6], BookedReductionKLConstants.boolDefault), 
+                strArr[5],
+                strArr[6], 
                 strArr[7], 
                 strArr[8], 
                 strArr[9]);
