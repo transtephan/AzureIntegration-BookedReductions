@@ -146,9 +146,9 @@ namespace AzureIntegration_BookedReductions.Models
             string _index,
             string _colourId,
             int _reducedPieces,
-            decimal _newPriceInFiscalCurrency,
-            decimal _oldPriceInFiscalCurrency,
-            decimal _totalPriceInFiscalCurrency,
+            string _newPriceInFiscalCurrency,
+            string _oldPriceInFiscalCurrency,
+            string _totalPriceInFiscalCurrency,
             string _notePosition,
             string _ibmSizeCode,
             string _sizeScaleCode,
@@ -195,11 +195,11 @@ namespace AzureIntegration_BookedReductions.Models
         [Required]
         public int ReducedPieces { get; set; }
         [Required]
-        public decimal NewPriceInFiscalCurrency { get; set; }
+        public string NewPriceInFiscalCurrency { get; set; }
         [Required]
-        public decimal OldPriceInFiscalCurrency { get; set; }
+        public string OldPriceInFiscalCurrency { get; set; }
         [Required]
-        public decimal TotalPriceInFiscalCurrency { get; set; }
+        public string TotalPriceInFiscalCurrency { get; set; }
         [Required]
         public string NotePosition { get; set; }
         [Required]
