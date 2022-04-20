@@ -18,12 +18,12 @@ namespace AzureIntegration_BookedReductions
         {
             _bookedReductionsKLService = bookedReductionsKLService;
         }
-        [FunctionName("ReprocessRecievedBookedReductionMsg")]
+        /*[FunctionName("ReprocessRecievedBookedReductionMsg")]
         public async Task RunReprocessing([BlobTrigger("bookedreduction-reprocess/{name}", Connection = "BlobStorageConnectionString")] Stream myBlob, string name, ILogger log)
         {
             log.LogInformation("Reprocessing of BookedReductions started.");
             await _bookedReductionsKLService.ReProcessMsg(myBlob, name, log);
-        }
+        }*/
 
         [FunctionName("RecieveBookedReductionMsg")]
         public void Run([ServiceBusTrigger("%QueueNameVMS%", Connection = "ServiceBusConnectionVMS")] Message myQueueItem, ILogger log)

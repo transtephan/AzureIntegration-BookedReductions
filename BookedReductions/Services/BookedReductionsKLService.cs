@@ -52,7 +52,8 @@ namespace AzureIntegration_BookedReductions.Services
                     if (Environment.GetEnvironmentVariable("SourceDataStorageLevel") == "1")
                     {
                         //Store received csvString to Blob
-                        await ProcessBlob(BookedReductionKLConstants.blobContainerName, "Source", DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss") + ".txt",
+                        await ProcessBlob(BookedReductionKLConstants.blobContainerName, 
+                            "Source", DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss") + ".txt",
                             Encoding.UTF8.GetBytes(queueItem), "txt/plain", log, "");
                         log.LogInformation("Uploaded Source CSV File to Blob Container");
                     }
@@ -65,7 +66,8 @@ namespace AzureIntegration_BookedReductions.Services
 
                     if (Environment.GetEnvironmentVariable("SourceDataStorageLevel") == "1") 
                     {
-                        await ProcessBlob(BookedReductionKLConstants.blobContainerName, "Transform", DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss") + ".json",
+                        await ProcessBlob(BookedReductionKLConstants.blobContainerName, 
+                            "Transform", DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss") + ".json",
                             jsonContentByteArr, "application/json", log, "");
                         log.LogInformation("Uploaded Transformed JSON File to Blob Container");
                     }
