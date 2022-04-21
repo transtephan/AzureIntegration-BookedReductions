@@ -141,6 +141,7 @@ namespace AzureIntegration_BookedReductions.Services
                     themessage = reader.ReadToEnd();
                 }
                 await _blobService.DeleteBlobAsync(blobClient);
+                log.LogInformation("Blob in Claimcheck-in deleted");
                 return themessage;
 
             }
