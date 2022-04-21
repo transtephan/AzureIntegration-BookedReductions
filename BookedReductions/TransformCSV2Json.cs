@@ -21,7 +21,7 @@ namespace AzureIntegration_BookedReductions
         [FunctionName("ReprocessRecievedBookedReductionMsg")]
         public async Task RunReprocessing([BlobTrigger("bookedreduction-reprocess/{name}", Connection = "BlobStorageConnectionString")] Stream myBlob, string name, ILogger log)
         {
-            log.LogInformation("Reprocessing of DeliveryTransfer started.");
+            log.LogInformation("Reprocessing of BookedReductions started.");
             await _bookedReductionsKLService.ReProcessMsg(myBlob, name, log);
         }
 

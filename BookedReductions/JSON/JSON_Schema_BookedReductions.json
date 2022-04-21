@@ -129,7 +129,7 @@
               "pattern": "^.$"
             },
             "EOP": {
-              "type": "boolean"
+              "type": "string"
             },
             "BookedReductionCreationDate": {
               "type": "string", //date
